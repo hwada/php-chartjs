@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+
+    <script src="Chart.min.js"></script>
+    <script>
+        window.onload = function() {
+            // $.getJSON('sample.php') ...
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'sample.php', true);
+            xhr.responseType = 'json';
+            xhr.onload = function(e) {
+                var ctx = document.getElementById('canvas').getContext('2d');
+                new Chart(ctx, xhr.response);
+            }
+            xhr.send();
+        }
+    </script>
+</head>
+
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+</body>
+</html>
